@@ -1,0 +1,116 @@
+---
+import { siteConfig } from '../config';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = `${siteConfig.nome} — ${siteConfig.especialidade} em ${siteConfig.cidade}`,
+  description = siteConfig.metaDescription,
+  image = '/og-image.jpg',
+  noindex = false,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
+const ogImageUrl = new URL(image, siteConfig.siteUrl).toString();
+
+const jsonLdLegalService = {
+  '@context': 'https://schema.org',
+  '@type': ['LegalService', 'LocalBusiness'],
+  name: `${siteConfig.nome} — ${siteConfig.especialidade}`,
+  legalName: siteConfig.nomeCompleto,
+  description: description,
+  url: siteConfig.siteUrl,
+  telephone: siteConfig.telefone,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.endereco,
+    addressLocality: siteConfig.cidade.split(',')[0].trim(),
+    addressRegion: siteConfig.cidade.split(',')[1]?.trim() ?? 'SP',
+    postalCode: siteConfig.cep,
+    addressCountry: 'BR',
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'São Paulo',
+  },
+  priceRange: '$$',
+  openingHours: 'Mo-Su 00:00-24:00',
+  knowsAbout: ['Direito Criminal', 'Habeas Corpus', 'Defesa Penal', 'Execução Penal'],
+};
+
+const jsonLdPerson = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.nomeCompleto,
+  jobTitle: siteConfig.especialidade,
+  worksFor: { '@type': 'Organization', name: `Escritório ${siteConfig.nome}` },
+  url: siteConfig.siteUrl,
+  telephone: siteConfig.telefone,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: siteConfig.cidade.split(',')[0].trim(),
+    addressCountry: 'BR',
+  },
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={siteConfig.metaKeywords} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={siteConfig.nome} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fontes — preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdLegalService)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)} />
+  </head>
+  <body class="bg-dark text-cream font-sans antialiased">
+    <slot />
+  </body>
+</html>
