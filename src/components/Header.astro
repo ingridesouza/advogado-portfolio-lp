@@ -1,0 +1,131 @@
+---
+import { siteConfig } from '../config';
+const waMensagem = encodeURIComponent(siteConfig.whatsappMensagem);
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  data-header
+>
+  <div
+    class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20 w-full"
+  >
+    <!-- Logo -->
+    <a href="/" class="flex flex-col leading-none group" aria-label="Início">
+      <span class="font-display text-base lg:text-lg font-bold text-cream tracking-wide">
+        {siteConfig.nome}
+      </span>
+      <span class="text-[10px] lg:text-xs text-gold tracking-[0.2em] uppercase">
+        {siteConfig.especialidade}
+      </span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Menu principal">
+      <a href="#servicos" class="text-sm text-muted hover:text-cream transition-colors duration-200">
+        Serviços
+      </a>
+      <a href="#sobre" class="text-sm text-muted hover:text-cream transition-colors duration-200">
+        Sobre
+      </a>
+      <a href="#depoimentos" class="text-sm text-muted hover:text-cream transition-colors duration-200">
+        Depoimentos
+      </a>
+      <a href="#faq" class="text-sm text-muted hover:text-cream transition-colors duration-200">
+        FAQ
+      </a>
+      <a
+        href={`https://wa.me/${siteConfig.whatsapp}?text=${waMensagem}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-dark text-sm font-semibold px-5 py-2.5 rounded transition-colors duration-200"
+        aria-label="Fale pelo WhatsApp"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.504 3.935 1.388 5.608L0 24l6.608-1.372A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.374l-.36-.214-3.724.773.793-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/>
+        </svg>
+        Fale Agora
+      </a>
+    </nav>
+
+    <!-- Botão hamburguer mobile -->
+    <button
+      id="menu-toggle"
+      class="lg:hidden flex flex-col justify-center gap-1.5 p-3 -mr-3 text-cream min-w-[44px] min-h-[44px]"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menu"
+    >
+      <span class="block w-6 h-0.5 bg-current transition-transform duration-200 menu-line-1"></span>
+      <span class="block w-6 h-0.5 bg-current transition-opacity duration-200 menu-line-2"></span>
+      <span class="block w-6 h-0.5 bg-current transition-transform duration-200 menu-line-3"></span>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <nav
+    id="mobile-menu"
+    class="lg:hidden hidden border-t border-line bg-card px-6 py-4 flex flex-col gap-4"
+    aria-label="Menu mobile"
+  >
+    <a href="#servicos" class="text-muted hover:text-cream py-2 transition-colors" data-mobile-link>Serviços</a>
+    <a href="#sobre" class="text-muted hover:text-cream py-2 transition-colors" data-mobile-link>Sobre</a>
+    <a href="#depoimentos" class="text-muted hover:text-cream py-2 transition-colors" data-mobile-link>Depoimentos</a>
+    <a href="#faq" class="text-muted hover:text-cream py-2 transition-colors" data-mobile-link>FAQ</a>
+    <a
+      href={`https://wa.me/${siteConfig.whatsapp}?text=${waMensagem}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-2 flex items-center justify-center gap-2 bg-gold text-dark font-semibold py-3 rounded text-sm"
+    >
+      Falar pelo WhatsApp
+    </a>
+  </nav>
+</header>
+
+<script>
+  // Scroll: adiciona fundo escuro ao header quando scrollar
+  const header = document.querySelector('[data-header]') as HTMLElement;
+  const updateHeader = () => {
+    if (window.scrollY > 20) {
+      header.style.background = 'rgba(10, 10, 10, 0.95)';
+      header.style.backdropFilter = 'blur(12px)';
+      header.style.borderBottom = '1px solid #1e1e1e';
+    } else {
+      header.style.background = 'transparent';
+      header.style.backdropFilter = 'none';
+      header.style.borderBottom = 'none';
+    }
+  };
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  // Menu mobile toggle
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const line1 = toggle.querySelector('.menu-line-1') as HTMLElement;
+  const line2 = toggle.querySelector('.menu-line-2') as HTMLElement;
+  const line3 = toggle.querySelector('.menu-line-3') as HTMLElement;
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.classList.toggle('hidden');
+    line1.style.transform = open ? '' : 'translateY(8px) rotate(45deg)';
+    line2.style.opacity = open ? '1' : '0';
+    line3.style.transform = open ? '' : 'translateY(-8px) rotate(-45deg)';
+  });
+
+  // Fechar menu ao clicar em link
+  document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      line1.style.transform = '';
+      line2.style.opacity = '1';
+      line3.style.transform = '';
+    });
+  });
+</script>
