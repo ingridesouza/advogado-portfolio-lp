@@ -1,0 +1,78 @@
+---
+import { siteConfig } from '../config';
+
+// Schema JSON-LD para depoimentos
+const jsonLdReviews = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: siteConfig.nome,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: String(siteConfig.depoimentos.length),
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: siteConfig.depoimentos.map((d) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: d.nome },
+    reviewRating: { '@type': 'Rating', ratingValue: String(d.estrelas), bestRating: '5' },
+    reviewBody: d.texto,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLdReviews)} />
+
+<section id="depoimentos" class="py-16 sm:py-20 lg:py-32 bg-card" aria-labelledby="depoimentos-titulo">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <!-- Cabeçalho -->
+    <div class="max-w-2xl mb-10 sm:mb-16 lg:mb-20">
+      <p class="text-gold text-xs tracking-[0.25em] uppercase mb-4 font-medium">Depoimentos</p>
+      <h2
+        id="depoimentos-titulo"
+        class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight mb-3"
+      >
+        O que nossos clientes dizem
+      </h2>
+      <p class="text-muted">Resultados reais que transformaram vidas. Depoimentos de clientes que confiaram em nossa defesa.</p>
+    </div>
+
+    <!-- Cards de depoimentos -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {siteConfig.depoimentos.map((dep) => (
+        <blockquote class="bg-dark border border-line rounded p-5 sm:p-8 flex flex-col gap-4 sm:gap-5 hover:border-gold transition-colors duration-300">
+          <!-- Estrelas -->
+          <div class="flex gap-1" aria-label={`${dep.estrelas} de 5 estrelas`}>
+            {Array.from({ length: dep.estrelas }).map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#c9a84c" stroke="#c9a84c" stroke-width="1" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Texto -->
+          <p class="text-muted text-sm leading-relaxed flex-1 italic">
+            &ldquo;{dep.texto}&rdquo;
+          </p>
+
+          <!-- Autor -->
+          <footer class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-card border border-line flex items-center justify-center">
+              <span class="text-gold font-display font-bold text-sm">{dep.nome.charAt(0)}</span>
+            </div>
+            <div>
+              <cite class="text-cream text-sm font-semibold not-italic">{dep.nome}</cite>
+              <p class="text-muted text-xs">Cliente</p>
+            </div>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+
+    <!-- Aviso legal sobre depoimentos -->
+    <p class="mt-8 text-center text-muted text-xs">
+      * Os nomes são abreviados para preservar a privacidade dos clientes.
+    </p>
+  </div>
+</section>

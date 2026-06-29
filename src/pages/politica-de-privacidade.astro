@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config';
+---
+
+<BaseLayout
+  title={`Política de Privacidade — ${siteConfig.nome}`}
+  description={`Política de Privacidade e Proteção de Dados do escritório ${siteConfig.nome}, em conformidade com a LGPD (Lei 13.709/2018).`}
+  noindex={true}
+>
+  <Header />
+  <main class="pt-24 pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <!-- Cabeçalho -->
+      <div class="mb-12 border-b border-line pb-10">
+        <p class="text-gold text-xs tracking-[0.25em] uppercase mb-4">LGPD</p>
+        <h1 class="font-display text-4xl font-bold text-cream mb-4">Política de Privacidade</h1>
+        <p class="text-muted text-sm">
+          Última atualização: {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </p>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="prose-dark space-y-10">
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">1. Identificação do Controlador</h2>
+          <p class="text-muted leading-relaxed">
+            O controlador dos seus dados pessoais é <strong class="text-cream">{siteConfig.nomeCompleto}</strong>,
+            advogado inscrito na {siteConfig.oab}, com escritório localizado em {siteConfig.endereco}, {siteConfig.cidade}.
+            Para contato: <a href={`mailto:${siteConfig.email}`} class="text-gold hover:text-gold-light">{siteConfig.email}</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">2. Dados Coletados</h2>
+          <p class="text-muted leading-relaxed mb-3">Coletamos apenas os dados estritamente necessários:</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li class="flex gap-2"><span class="text-gold">—</span> Nome completo</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Número de telefone / WhatsApp</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Endereço de e-mail (opcional)</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Descrição do caso jurídico fornecida pelo usuário</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Dados de navegação (cookies técnicos)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">3. Finalidade do Tratamento</h2>
+          <p class="text-muted leading-relaxed">
+            Seus dados são utilizados exclusivamente para: responder à sua solicitação de contato, fornecer orientação jurídica inicial,
+            e entrar em contato para agendamento de consulta. <strong class="text-cream">Não compartilhamos, vendemos ou cedemos seus dados a terceiros.</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">4. Sigilo Profissional</h2>
+          <p class="text-muted leading-relaxed">
+            Todas as informações relacionadas ao seu caso são protegidas pelo sigilo profissional do advogado, conforme determina o
+            art. 7º, II, do Estatuto da OAB (Lei 8.906/1994) e o Código de Ética e Disciplina da OAB. O sigilo é absoluto e
+            irrenunciável.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">5. Cookies</h2>
+          <p class="text-muted leading-relaxed">
+            Utilizamos apenas cookies técnicos essenciais para o funcionamento do site e, com seu consentimento, cookies analíticos
+            para mensurar o desempenho. Você pode recusar cookies analíticos através do banner apresentado em sua primeira visita.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">6. Seus Direitos (LGPD)</h2>
+          <p class="text-muted leading-relaxed mb-3">
+            Nos termos da Lei 13.709/2018 (LGPD), você tem direito a:
+          </p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li class="flex gap-2"><span class="text-gold">—</span> Confirmar a existência de tratamento dos seus dados</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Acessar os dados que possuímos sobre você</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Corrigir dados incompletos ou desatualizados</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Solicitar a eliminação dos seus dados</li>
+            <li class="flex gap-2"><span class="text-gold">—</span> Revogar o consentimento a qualquer momento</li>
+          </ul>
+          <p class="text-muted text-sm mt-4">
+            Para exercer seus direitos, entre em contato: <a href={`mailto:${siteConfig.email}`} class="text-gold hover:text-gold-light">{siteConfig.email}</a>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">7. Segurança</h2>
+          <p class="text-muted leading-relaxed">
+            Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acesso não autorizado,
+            perda ou destruição, incluindo comunicação via HTTPS e armazenamento seguro.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-bold text-cream mb-4">8. Contato</h2>
+          <p class="text-muted leading-relaxed">
+            Dúvidas sobre esta política? Entre em contato pelo e-mail{' '}
+            <a href={`mailto:${siteConfig.email}`} class="text-gold hover:text-gold-light">{siteConfig.email}</a>
+            {' '}ou pelo telefone {siteConfig.telefone}.
+          </p>
+        </section>
+      </div>
+
+      <!-- Voltar -->
+      <div class="mt-12 pt-8 border-t border-line">
+        <a href="/" class="text-gold text-sm hover:text-gold-light transition-colors flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,220 @@
+---
+import { siteConfig } from '../config';
+const waMensagem = encodeURIComponent(siteConfig.whatsappMensagem);
+---
+
+<section id="contato" class="py-16 sm:py-20 lg:py-32 bg-card" aria-labelledby="contato-titulo">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <!-- Cabeçalho -->
+    <div class="max-w-2xl mb-10 sm:mb-14">
+      <p class="text-gold text-xs tracking-[0.25em] uppercase mb-4 font-medium">Entre em contato</p>
+      <h2
+        id="contato-titulo"
+        class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight mb-4"
+      >
+        Sua defesa começa aqui
+      </h2>
+      <p class="text-muted text-lg leading-relaxed">
+        A primeira consulta é <strong class="text-cream">gratuita e confidencial</strong>. Fale conosco agora e comece a construir sua defesa.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
+      <!-- Formulário Netlify -->
+      <div>
+        <form
+          name="contato"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="space-y-5"
+          novalidate
+          id="contact-form"
+        >
+          <!-- Honeypot anti-spam -->
+          <div hidden>
+            <label>Não preencha este campo: <input name="bot-field" /></label>
+          </div>
+          <input type="hidden" name="form-name" value="contato" />
+
+          <div>
+            <label for="nome" class="block text-cream text-sm font-medium mb-2">Nome completo *</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+              autocomplete="name"
+              placeholder="Seu nome"
+              class="w-full bg-dark border border-line rounded px-4 py-3 text-cream text-sm placeholder:text-muted focus:border-gold focus:outline-none transition-colors duration-200"
+            />
+          </div>
+
+          <div>
+            <label for="telefone" class="block text-cream text-sm font-medium mb-2">Telefone / WhatsApp *</label>
+            <input
+              type="tel"
+              id="telefone"
+              name="telefone"
+              required
+              autocomplete="tel"
+              placeholder="(11) 99999-9999"
+              class="w-full bg-dark border border-line rounded px-4 py-3 text-cream text-sm placeholder:text-muted focus:border-gold focus:outline-none transition-colors duration-200"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-cream text-sm font-medium mb-2">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              placeholder="seu@email.com"
+              class="w-full bg-dark border border-line rounded px-4 py-3 text-cream text-sm placeholder:text-muted focus:border-gold focus:outline-none transition-colors duration-200"
+            />
+          </div>
+
+          <div>
+            <label for="assunto" class="block text-cream text-sm font-medium mb-2">Assunto *</label>
+            <select
+              id="assunto"
+              name="assunto"
+              required
+              class="w-full bg-dark border border-line rounded px-4 py-3 text-cream text-sm focus:border-gold focus:outline-none transition-colors duration-200 appearance-none"
+            >
+              <option value="" disabled selected>Selecione o tipo de caso</option>
+              <option value="flagrante">Prisão em Flagrante</option>
+              <option value="habeas">Habeas Corpus</option>
+              <option value="defesa">Defesa Criminal</option>
+              <option value="recurso">Recursos e Apelações</option>
+              <option value="execucao">Execução Penal</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mensagem" class="block text-cream text-sm font-medium mb-2">Descreva seu caso *</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              required
+              rows="5"
+              placeholder="Descreva brevemente sua situação. Todos os detalhes são tratados com sigilo absoluto."
+              class="w-full bg-dark border border-line rounded px-4 py-3 text-cream text-sm placeholder:text-muted focus:border-gold focus:outline-none transition-colors duration-200 resize-none"
+            ></textarea>
+          </div>
+
+          <p class="text-muted text-xs">
+            * Campos obrigatórios. Suas informações são tratadas com total confidencialidade.
+          </p>
+
+          <button
+            type="submit"
+            class="w-full bg-gold hover:bg-gold-light text-dark font-semibold py-4 rounded transition-colors duration-200 text-sm"
+          >
+            Enviar Mensagem
+          </button>
+        </form>
+
+        <!-- Mensagem de sucesso (oculta por padrão) -->
+        <div
+          id="form-success"
+          class="hidden mt-4 p-4 border border-gold bg-dark rounded text-center"
+          role="alert"
+        >
+          <p class="text-gold font-semibold text-sm">Mensagem enviada com sucesso!</p>
+          <p class="text-muted text-xs mt-1">Entraremos em contato em breve.</p>
+        </div>
+      </div>
+
+      <!-- Contato direto -->
+      <div class="flex flex-col gap-6">
+        <!-- WhatsApp CTA (destaque) -->
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=${waMensagem}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 sm:gap-5 p-4 sm:p-6 border border-line hover:border-gold rounded transition-colors duration-300 group"
+          aria-label="Falar pelo WhatsApp"
+        >
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold/10 border border-gold/30 rounded flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#c9a84c" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.504 3.935 1.388 5.608L0 24l6.608-1.372A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.374l-.36-.214-3.724.773.793-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/>
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-cream font-semibold text-sm sm:text-base mb-1 group-hover:text-gold transition-colors truncate">WhatsApp — Resposta Imediata</p>
+            <p class="text-muted text-xs sm:text-sm">{siteConfig.telefone}</p>
+            <p class="text-gold text-xs mt-1">Atendimento 24h</p>
+          </div>
+        </a>
+
+        <!-- E-mail -->
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="flex items-center gap-3 sm:gap-5 p-4 sm:p-6 border border-line hover:border-gold rounded transition-colors duration-300 group"
+          aria-label={`Enviar e-mail para ${siteConfig.email}`}
+        >
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-card border border-line rounded flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-cream font-semibold text-sm sm:text-base mb-1 group-hover:text-gold transition-colors">E-mail</p>
+            <p class="text-muted text-xs sm:text-sm truncate">{siteConfig.email}</p>
+          </div>
+        </a>
+
+        <!-- Endereço -->
+        <div class="flex items-start gap-3 sm:gap-5 p-4 sm:p-6 border border-line rounded">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-card border border-line rounded flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <p class="text-cream font-semibold text-sm sm:text-base mb-1">Escritório</p>
+            <p class="text-muted text-xs sm:text-sm">{siteConfig.endereco}</p>
+            <p class="text-muted text-xs sm:text-sm">{siteConfig.cidade} — CEP {siteConfig.cep}</p>
+          </div>
+        </div>
+
+        <!-- Horário -->
+        <div class="p-5 border border-gold/20 bg-gold/5 rounded">
+          <p class="text-gold text-sm font-semibold mb-1">Atendimento 24 horas</p>
+          <p class="text-muted text-xs">Em casos urgentes (flagrante, prisão preventiva), atendemos imediatamente a qualquer hora do dia ou da noite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Feedback de envio do formulário
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('form-success')!;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data as any).toString(),
+        });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      } catch {
+        // Fallback: submit normal se fetch falhar
+        form.submit();
+      }
+    });
+  }
+</script>

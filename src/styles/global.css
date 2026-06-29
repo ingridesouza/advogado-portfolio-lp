@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta de cores — Direito Criminal */
+  --color-dark: #0a0a0a;
+  --color-card: #111111;
+  --color-line: #1e1e1e;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e2c06d;
+  --color-cream: #f0ede8;
+  --color-muted: #8a8785;
+
+  /* Tipografia */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Animações */
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-fade-in: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  overflow-x: clip;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #f0ede8;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Contenção de overflow por seção */
+section, main, article, header, footer {
+  max-width: 100%;
+}
+
+/* Flex items com texto: evita min-width: auto quebrando layout */
+.flex > * {
+  min-width: 0;
+}
+
+/* Imagens e SVGs nunca excedem o container */
+img, svg {
+  max-width: 100%;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a84c;
+}
+
+/* Seleção de texto */
+::selection {
+  background-color: #c9a84c;
+  color: #0a0a0a;
+}
+
+/* Focus visível para acessibilidade */
+:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Accordion FAQ — CSS only com details/summary */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Animação suave no accordion */
+details[open] .faq-body {
+  animation: fade-in 0.25s ease-out;
+}

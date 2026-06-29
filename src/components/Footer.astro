@@ -1,0 +1,117 @@
+---
+import { siteConfig } from '../config';
+const waMensagem = encodeURIComponent(siteConfig.whatsappMensagem);
+const anoAtual = new Date().getFullYear();
+---
+
+<footer class="bg-dark border-t border-line" role="contentinfo">
+  <!-- Conteúdo principal -->
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+      <!-- Identidade -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="/" class="block mb-4" aria-label="Página inicial">
+          <span class="font-display text-xl font-bold text-cream">{siteConfig.nome}</span>
+          <br />
+          <span class="text-xs text-gold tracking-[0.2em] uppercase">{siteConfig.especialidade}</span>
+        </a>
+        <p class="text-muted text-sm leading-relaxed mb-4">
+          Defesa criminal especializada em São Paulo. Sua liberdade, nosso compromisso.
+        </p>
+        <p class="text-muted text-xs">{siteConfig.oab}</p>
+      </div>
+
+      <!-- Serviços -->
+      <div>
+        <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-5">Serviços</h3>
+        <ul class="space-y-2.5">
+          {siteConfig.servicos.slice(0, 5).map((s) => (
+            <li>
+              <a href="#servicos" class="text-muted text-sm hover:text-gold transition-colors">
+                {s.titulo}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Navegação -->
+      <div>
+        <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-5">Navegação</h3>
+        <ul class="space-y-2.5">
+          <li><a href="#inicio" class="text-muted text-sm hover:text-gold transition-colors">Início</a></li>
+          <li><a href="#sobre" class="text-muted text-sm hover:text-gold transition-colors">Sobre</a></li>
+          <li><a href="#depoimentos" class="text-muted text-sm hover:text-gold transition-colors">Depoimentos</a></li>
+          <li><a href="#faq" class="text-muted text-sm hover:text-gold transition-colors">Perguntas Frequentes</a></li>
+          <li><a href="#contato" class="text-muted text-sm hover:text-gold transition-colors">Contato</a></li>
+          <li>
+            <a href="/politica-de-privacidade" class="text-muted text-sm hover:text-gold transition-colors">
+              Política de Privacidade
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div>
+        <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-5">Contato</h3>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp}?text=${waMensagem}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted text-sm hover:text-gold transition-colors flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a84c" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.504 3.935 1.388 5.608L0 24l6.608-1.372A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.374l-.36-.214-3.724.773.793-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/>
+              </svg>
+              {siteConfig.telefone}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${siteConfig.email}`} class="text-muted text-sm hover:text-gold transition-colors flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              {siteConfig.email}
+            </a>
+          </li>
+          <li class="flex items-start gap-2 text-muted text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>{siteConfig.endereco}<br />{siteConfig.cidade}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="border-t border-line">
+    <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted">
+      <p>&copy; {anoAtual} {siteConfig.nome}. Todos os direitos reservados.</p>
+      <p>{siteConfig.oab}</p>
+    </div>
+  </div>
+
+  <!-- Botão flutuante WhatsApp (mobile/tablet) -->
+  <a
+    href={`https://wa.me/${siteConfig.whatsapp}?text=${waMensagem}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-gold hover:bg-gold-light text-dark font-semibold text-sm px-4 py-3 rounded-full shadow-lg transition-colors duration-200 lg:hidden min-h-[44px]"
+    style="bottom: max(1.5rem, env(safe-area-inset-bottom));"
+    aria-label="Falar pelo WhatsApp"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.504 3.935 1.388 5.608L0 24l6.608-1.372A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.013-1.374l-.36-.214-3.724.773.793-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/>
+    </svg>
+    WhatsApp
+  </a>
+</footer>

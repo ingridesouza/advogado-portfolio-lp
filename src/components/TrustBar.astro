@@ -1,0 +1,42 @@
+---
+import { siteConfig } from '../config';
+
+const stats = [
+  {
+    valor: `${siteConfig.anosExperiencia}+`,
+    label: 'Anos de Experiência',
+    descricao: 'de atuação em defesa criminal',
+  },
+  {
+    valor: `${siteConfig.casosResolvidos}+`,
+    label: 'Casos Resolvidos',
+    descricao: 'com resultado favorável ao cliente',
+  },
+  {
+    valor: '24h',
+    label: 'Disponibilidade',
+    descricao: 'sete dias por semana',
+  },
+  {
+    valor: siteConfig.oab.split(' ')[0],
+    label: siteConfig.oab.split(' ').slice(1).join(' '),
+    descricao: 'regularmente inscrito',
+  },
+];
+---
+
+<section class="bg-card border-y border-line" aria-label="Números que comprovam nossa experiência">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0">
+      {stats.map((stat, i) => (
+        <div class={`flex flex-col items-center text-center ${i < stats.length - 1 ? 'lg:border-r lg:border-line' : ''} lg:px-8`}>
+          <span class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gold mb-1">
+            {stat.valor}
+          </span>
+          <span class="text-cream font-semibold text-sm mb-1">{stat.label}</span>
+          <span class="text-muted text-xs">{stat.descricao}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

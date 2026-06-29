@@ -27,5 +27,5 @@ pnpm-debug.log*
 .claude/settings.local.json
 AGENTS.md
 
-# client photos (substituir por foto real do cliente)
-public/foto-advogado.jpg
+# renomear ou substituir pela foto real do cliente antes de cada entrega
+# public/foto-advogado.jpg
