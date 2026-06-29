@@ -1,0 +1,110 @@
+---
+import { siteConfig } from '../config';
+
+const temFoto = siteConfig.foto && siteConfig.foto.trim() !== '';
+
+const formacoes = [
+  'Bacharel em Direito — Universidade de São Paulo (USP)',
+  'Especialização em Direito Penal — PUCSP',
+  'Membro da Comissão de Direito Criminal da OAB/SP',
+];
+
+const competencias = [
+  'Defesa no Tribunal do Júri',
+  'Crimes contra a pessoa e o patrimônio',
+  'Crimes financeiros e empresariais',
+  'Tráfico e crimes relacionados a drogas',
+  'Violência doméstica e crimes de gênero',
+];
+---
+
+<section id="sobre" class="py-16 sm:py-20 lg:py-32 bg-card" aria-labelledby="sobre-titulo">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+      <!-- Foto -->
+      <div class="relative">
+        <div
+          class="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 bg-dark border border-line rounded overflow-hidden"
+          aria-label={`Fotografia de ${siteConfig.nomeCompleto}`}
+        >
+          {temFoto && (
+            <img
+              src={siteConfig.foto}
+              alt={`${siteConfig.nomeCompleto} — ${siteConfig.especialidade}`}
+              width="384"
+              height="512"
+              loading="lazy"
+              class="w-full h-full object-cover object-top"
+            />
+          )}
+          {!temFoto && (
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <p class="text-xs text-line text-center px-4">
+                Substituir por foto profissional do advogado<br/>(proporção 3:4)
+              </p>
+            </div>
+          )}
+        </div>
+
+        <!-- OAB Badge decorativo -->
+        <div class="absolute bottom-4 right-0 sm:-right-4 lg:-right-8 bg-gold text-dark rounded px-5 py-3 text-center shadow-xl">
+          <p class="text-xs font-bold uppercase tracking-wider">Inscrito</p>
+          <p class="font-display text-sm font-bold">{siteConfig.oab}</p>
+        </div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div>
+        <p class="text-gold text-xs tracking-[0.25em] uppercase mb-4 font-medium">Sobre o advogado</p>
+
+        <h2
+          id="sobre-titulo"
+          class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight mb-6"
+        >
+          {siteConfig.nomeCompleto}
+        </h2>
+
+        <p class="text-muted text-base leading-relaxed mb-6">
+          Com mais de <strong class="text-cream">{siteConfig.anosExperiencia} anos de experiência</strong> exclusiva em Direito Criminal, o Dr. {siteConfig.nomeCompleto.split(' ')[0]} construiu uma trajetória sólida baseada em defesa técnica rigorosa, comprometimento com o cliente e resultados concretos.
+        </p>
+        <p class="hidden sm:block text-muted text-base leading-relaxed mb-8">
+          Cada caso é tratado com atenção individualizada. Da prisão em flagrante ao recurso em tribunal superior, a defesa é construída com estratégia, ética e determinação total pela sua liberdade.
+        </p>
+
+        <!-- Formação -->
+        <div class="mb-8 mt-6 sm:mt-0">
+          <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-4">Formação e Credenciais</h3>
+          <ul class="space-y-2">
+            {formacoes.map((f) => (
+              <li class="flex items-start gap-3 text-muted text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Competências (oculto no mobile) -->
+        <div class="hidden sm:block">
+          <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-4">Áreas de Competência</h3>
+          <ul class="space-y-2">
+            {competencias.map((c) => (
+              <li class="flex items-start gap-3 text-muted text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
