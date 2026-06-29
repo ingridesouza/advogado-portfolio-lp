@@ -24,14 +24,14 @@ const temFoto = siteConfig.foto && siteConfig.foto.trim() !== '';
     ></div>
   </div>
 
-  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-36 lg:pb-28">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 pt-14 pb-10 lg:pt-36 lg:pb-28">
     <!-- Grid: texto à esquerda, foto à direita (desktop) -->
     <div class="grid lg:grid-cols-2 lg:gap-16 xl:gap-24 items-center">
 
       <!-- Conteúdo -->
       <div>
         <!-- Badge -->
-        <div class="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-line rounded-full px-3 sm:px-4 py-1.5 max-w-full overflow-hidden">
+        <div class="mb-4 sm:mb-6 inline-flex items-center gap-2 border border-line rounded-full px-3 sm:px-4 py-1.5 max-w-full overflow-hidden">
           <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse flex-shrink-0"></span>
           <span class="text-[10px] sm:text-xs text-muted tracking-[0.12em] sm:tracking-widest uppercase truncate">
             <span class="sm:hidden">{siteConfig.oab} &bull; 24h</span>
@@ -40,13 +40,13 @@ const temFoto = siteConfig.foto && siteConfig.foto.trim() !== '';
         </div>
 
         <!-- Headline -->
-        <h1 class="font-display text-[2rem] sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.1] text-cream mb-5 sm:mb-6">
+        <h1 class="font-display text-[2rem] sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.1] text-cream mb-4 sm:mb-6">
           {siteConfig.headline.split(' ').slice(0, -1).join(' ')}
           <span class="text-gold"> {siteConfig.headline.split(' ').slice(-1)[0]}</span>
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-lg">
+        <p class="text-base sm:text-lg text-muted leading-relaxed mb-6 sm:mb-10 max-w-lg line-clamp-2 sm:line-clamp-none">
           {siteConfig.subheadline}
         </p>
 
@@ -78,7 +78,7 @@ const temFoto = siteConfig.foto && siteConfig.foto.trim() !== '';
       </div>
 
       <!-- Foto do advogado — banner full-width no mobile, retrato à direita no desktop -->
-      <div class="order-first lg:order-last flex justify-center lg:justify-end lg:pr-8 mb-6 lg:mb-0">
+      <div class="order-first lg:order-last flex justify-center lg:justify-end lg:pr-8 mb-4 lg:mb-0">
         <div class="relative w-full lg:max-w-[340px]">
           <!-- Quadro decorativo (só desktop) -->
           <div
@@ -94,12 +94,12 @@ const temFoto = siteConfig.foto && siteConfig.foto.trim() !== '';
               height="453"
               loading="eager"
               fetchpriority="high"
-              class="relative z-10 w-full h-[320px] sm:h-[360px] lg:h-auto lg:aspect-[3/4] object-cover object-[center_20%] rounded"
+              class="relative z-10 w-full h-[220px] sm:h-[320px] lg:h-auto lg:aspect-[3/4] object-cover object-[center_20%] rounded"
             />
           )}
           {!temFoto && (
             <div
-              class="relative z-10 w-full h-[280px] sm:h-[340px] lg:h-auto lg:aspect-[3/4] bg-card border border-line rounded flex flex-col items-center justify-center gap-3"
+              class="relative z-10 w-full h-[220px] sm:h-[300px] lg:h-auto lg:aspect-[3/4] bg-card border border-line rounded flex flex-col items-center justify-center gap-3"
               aria-label="Placeholder para foto do advogado"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

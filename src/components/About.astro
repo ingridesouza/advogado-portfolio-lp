@@ -18,13 +18,13 @@ const competencias = [
 ];
 ---
 
-<section id="sobre" class="py-16 sm:py-20 lg:py-32 bg-card" aria-labelledby="sobre-titulo">
+<section id="sobre" class="py-10 sm:py-20 lg:py-32 bg-card" aria-labelledby="sobre-titulo">
   <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-20 items-center">
       <!-- Foto -->
       <div class="relative">
         <div
-          class="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 bg-dark border border-line rounded overflow-hidden"
+          class="relative aspect-[3/4] max-w-[220px] sm:max-w-sm mx-auto lg:mx-0 bg-dark border border-line rounded overflow-hidden"
           aria-label={`Fotografia de ${siteConfig.nomeCompleto}`}
         >
           {temFoto && (
@@ -63,7 +63,7 @@ const competencias = [
 
         <h2
           id="sobre-titulo"
-          class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight mb-6"
+          class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight mb-4 sm:mb-6"
         >
           {siteConfig.nomeCompleto}
         </h2>
@@ -76,7 +76,7 @@ const competencias = [
         </p>
 
         <!-- Formação -->
-        <div class="mb-8 mt-6 sm:mt-0">
+        <div class="mb-5 mt-4 sm:mt-0">
           <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-4">Formação e Credenciais</h3>
           <ul class="space-y-2">
             {formacoes.map((f) => (

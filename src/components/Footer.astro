@@ -6,8 +6,8 @@ const anoAtual = new Date().getFullYear();
 
 <footer class="bg-dark border-t border-line" role="contentinfo">
   <!-- Conteúdo principal -->
-  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+  <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
       <!-- Identidade -->
       <div class="sm:col-span-2 lg:col-span-1">
         <a href="/" class="block mb-4" aria-label="Página inicial">
@@ -22,7 +22,7 @@ const anoAtual = new Date().getFullYear();
       </div>
 
       <!-- Serviços -->
-      <div>
+      <div class="hidden sm:block">
         <h3 class="text-cream font-semibold text-sm uppercase tracking-wider mb-5">Serviços</h3>
         <ul class="space-y-2.5">
           {siteConfig.servicos.slice(0, 5).map((s) => (
@@ -93,7 +93,7 @@ const anoAtual = new Date().getFullYear();
 
   <!-- Barra inferior -->
   <div class="border-t border-line">
-    <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted">
+    <div class="w-full mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted">
       <p>&copy; {anoAtual} {siteConfig.nome}. Todos os direitos reservados.</p>
       <p>{siteConfig.oab}</p>
     </div>
