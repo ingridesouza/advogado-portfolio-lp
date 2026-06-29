@@ -5,6 +5,7 @@ export const siteConfig = {
   oab: "OAB/SP 123.456",
   especialidade: "Advogado Criminalista",
   foto: "/foto-advogado.jpg", // proporção 3:4 recomendada
+  ogImage: "", // imagem para redes sociais (1200×630px ideal) — se vazio, usa a foto acima
 
   // Contato
   telefone: "+55 (11) 99999-9999",
