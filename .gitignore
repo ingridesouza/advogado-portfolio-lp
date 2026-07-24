@@ -29,3 +29,6 @@ AGENTS.md
 
 # renomear ou substituir pela foto real do cliente antes de cada entrega
 # public/foto-advogado.jpg
+
+# Local Netlify folder
+.netlify
